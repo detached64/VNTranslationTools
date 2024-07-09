@@ -62,11 +62,19 @@ namespace VNTextPatch.Shared
             {
                 Console.WriteLine(inputScriptName);
 
-                string textScriptName;
-                if (!string.IsNullOrEmpty(_inputScript.Extension))
-                    textScriptName = Path.ChangeExtension(inputScriptName, _textScript.Extension);
-                else
-                    textScriptName = inputScriptName + _textScript.Extension;
+                try
+                {
+                    string textScriptName;
+                    if (!string.IsNullOrEmpty(_inputScript.Extension))
+                        textScriptName = Path.ChangeExtension(inputScriptName, _textScript.Extension);
+                    else
+                        textScriptName = inputScriptName + _textScript.Extension;
+
+                    ExtractOne(inputScriptName, textScriptName);
+                } catch (Exception ex)
+                {
+                    Console.Error.Write("Error when parsing "+ inputScriptName + " : " + ex.ToString());
+                }
 
                 ExtractOne(inputScriptName, textScriptName);
             }
