@@ -70,7 +70,6 @@ namespace VNTextPatch.Shared
                     else
                         textScriptName = inputScriptName + _textScript.Extension;
 
-                    ExtractOne(inputScriptName, textScriptName);
                 } catch (Exception ex)
                 {
                     Console.Error.Write("Error when parsing "+ inputScriptName + " : " + ex.ToString());
